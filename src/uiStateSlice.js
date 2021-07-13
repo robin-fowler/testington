@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { createSlice, createAction } from '@reduxjs/toolkit';
 import { setTodos, addTodo } from './actions';
+import { test } from './functions';
 
 // actions
 export const updateTime = createAction('updateTime', (payload) => {

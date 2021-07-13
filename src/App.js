@@ -12,6 +12,7 @@ import hero_2 from './assets/hero_2.df8d6580.png';
 import { Switch, Route } from 'react-router-dom';
 import TodoView from './TodoView';
 import TodoItem from './TodoItem';
+import Modal from './Modal';
 
 
 export class App extends React.Component {
@@ -85,6 +86,10 @@ export class App extends React.Component {
     const { todos } = this.props;
     return todos;
   }
+  getModalonClick() {
+    const { toggleDialog } = this.props;
+    toggleDialog();
+  }
 
   render() {
     
@@ -108,6 +113,7 @@ export class App extends React.Component {
             {this.getTodoItemLoop().map((todoItem, index) => (
               <TodoItem key={index} id={this.getTodoItemid({ todoItem })} />
             ))}
+            <Modal active={this.props.showDialog} onClick={this.getModalonClick()} />
           </div>
         )} />
       </Switch>

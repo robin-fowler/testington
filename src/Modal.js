@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 
 // state management
 import { connect } from 'react-redux';
-import { toggleDialog } from './uiStateSlice';
+import {  } from './uiStateSlice';
 import {  } from './todosSlice';
 //assets
 import hero_2 from './assets/hero_2.df8d6580.png';
 
 
-export class Modal extends React.Component {
+export default class Modal extends React.Component {
   constructor(props) {
     super(props);
     
@@ -22,8 +22,8 @@ export class Modal extends React.Component {
    * @param {Object} event - event object passed from browser
    */
   onClickDialog(event) {
-    const { toggleDialog } = this.props;
-    toggleDialog();
+    const { onClick } = this.props;
+    onClick();
   }
 
   getDialogVisibility() {
@@ -45,8 +45,3 @@ export class Modal extends React.Component {
   }
 }
 
-
-export default connect(
-  null,
-  { toggleDialog }
-)(Modal);
