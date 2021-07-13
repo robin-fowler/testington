@@ -4,6 +4,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateTime } from './uiStateSlice';
 import { getTodo, setTodoChecked, setTodoText, removeTodo } from './todosSlice';
+//assets
+import slyck_logo from './assets/slyck_logo.b754c182.png';
 
 // components
 

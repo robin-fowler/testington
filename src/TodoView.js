@@ -4,6 +4,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTime } from './uiStateSlice';
 import { getTodo } from './todosSlice';
+//assets
+import slyck_logo from './assets/slyck_logo.b754c182.png';
 
 // components
 
@@ -29,7 +31,7 @@ export class TodoView extends React.Component {
         <Link className="back-link" to="/">Back to list</Link>
         <h1>{this.getHeadingTextContent()}</h1>
         <h2>{this.getTimeTextContent()}</h2>
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400px' height='300px' viewBox='0 0 400 300' version='1.1'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Placeholder' fill='%23000000'%3E%3Crect id='Rectangle' fill-opacity='0.048120471' x='0' y='0' width='400' height='300'%3E%3C/rect%3E%3Cpath d='M157.75463,266.203704 L100,220 L0,300 L163.5,300 L400,300 L263.5,150 L157.75463,266.203704 Z' id='Combined-Shape' fill-opacity='0.0504132699'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400px' height='300px' viewBox='0 0 400 300' version='1.1'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Placeholder' fill='%23000000'%3E%3Crect id='Rectangle' fill-opacity='0.048120471' x='0' y='0' width='400' height='300'%3E%3C/rect%3E%3Cpath d='M157.75463,266.203704 L100,220 L0,300 L163.5,300 L400,300 L263.5,150 L157.75463,266.203704 Z' id='Combined-Shape' fill-opacity='0.0504132699'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E" />
+        <img src={slyck_logo} />
       </div>
     )
   }
