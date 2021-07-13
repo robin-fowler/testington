@@ -1,6 +1,5 @@
 
 import { createAction } from '@reduxjs/toolkit';
-import { test } from './functions';
 const actions = {};
 actions.fetchTodos = (payload) => {
   return async (dispatch, getState) => {
