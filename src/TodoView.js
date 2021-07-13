@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getTime } from './uiStateSlice';
 import { getTodo } from './todosSlice';
 //assets
-import slyck_logo from './assets/slyck_logo.b754c182.png';
+import hero_2 from './assets/hero_2.df8d6580.png';
 
 // components
 
@@ -31,7 +31,7 @@ export class TodoView extends React.Component {
         <Link className="back-link" to="/">Back to list</Link>
         <h1>{this.getHeadingTextContent()}</h1>
         <h2>{this.getTimeTextContent()}</h2>
-        <img src={slyck_logo} />
+        <img src={hero_2} />
       </div>
     )
   }
