@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { toggleDialog } from './uiStateSlice';
 import {  } from './todosSlice';
 //assets
-import slyck_logo from './assets/slyck_logo.b754c182.png';
+import hero_2 from './assets/hero_2.df8d6580.png';
 
 
 export class Modal extends React.Component {

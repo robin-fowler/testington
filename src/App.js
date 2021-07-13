@@ -6,7 +6,7 @@ import { fetchTodos, addTodo } from './actions';
 import { getDialogActiveState, getTodosState, getNewTodoName, toggleDialog, setNewTodoName } from './uiStateSlice';
 import { getTodos } from './todosSlice';
 //assets
-import slyck_logo from './assets/slyck_logo.b754c182.png';
+import hero_2 from './assets/hero_2.df8d6580.png';
 
 // components
 import { Switch, Route } from 'react-router-dom';
