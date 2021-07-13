@@ -97,7 +97,7 @@ export class App extends React.Component {
         )} />
         <Route path="/" render={routeProps => (
           <div className="container">
-            <h1 onClick={this.onClickMainHeading}>Today</h1>
+            <h1 onClick={this.onClickMainHeading}>Today.</h1>
             <h2>Hello world.</h2>
             <div className="new-todo-ui">
               <input value={this.props.newTodoName} className="new-todo-input" type="text" onChange={this.onChangeNewTodoInput} onKeyUp={this.onKeyUpNewTodoInput} />
