@@ -5,7 +5,7 @@ import { setTodos, addTodo } from './actions';
 // actions
 export const updateTime = createAction('updateTime', (payload) => {
   return { payload: (() => {
-    return { time: moment().format('MMMM Do YYYY, h:mm:ss a') };
+    return test({ time: moment().format('MMMM Do YYYY, h:mm:ss a') });
   })() }
 });
 export const setNewTodoName = createAction('setNewTodoName');
