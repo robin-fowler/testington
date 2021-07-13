@@ -1,11 +1,12 @@
 import moment from 'moment';
 import { createSlice, createAction } from '@reduxjs/toolkit';
 import { setTodos, addTodo } from './actions';
+import { test } from './functions';
 
 // actions
 export const updateTime = createAction('updateTime', (payload) => {
   return { payload: (() => {
-    return { time: moment().format('MMMM Do YYYY, h:mm:ss a') };
+    return test({ time: moment().format('MMMM Do YYYY, h:mm:ss a') });
   })() }
 });
 export const setNewTodoName = createAction('setNewTodoName');
