@@ -104,7 +104,7 @@ export class App extends React.Component {
         )} />
         <Route path="/" render={routeProps => (
           <div className="container">
-            <h1 onClick={this.onClickMainHeading}>Today.</h1>
+            <h1 onClick={this.onClickMainHeading}>Today</h1>
             <h2>Hello world.</h2>
             <div className="new-todo-ui">
               <input value={this.props.newTodoName} className="new-todo-input" type="text" onChange={this.onChangeNewTodoInput} onKeyUp={this.onKeyUpNewTodoInput} />
@@ -113,7 +113,7 @@ export class App extends React.Component {
             {this.getTodoItemLoop().map((todoItem, index) => (
               <TodoItem key={index} id={this.getTodoItemid({ todoItem })} />
             ))}
-            <Modal active={this.props.showDialog} onClick={this.getModalonClick()} />
+            <Modal active={this.props.showDialog} onClick={this.getModalonClick} />
           </div>
         )} />
       </Switch>
