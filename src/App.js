@@ -14,6 +14,18 @@ import TodoView from './TodoView';
 import TodoItem from './TodoItem';
 import Modal from './Modal';
 
+import styled from 'styled-components';
+
+const MainHeading = styled.h1`
+  margin-bottom: 1rem;
+`;
+const Subheading = styled.h1`
+  text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #555;
+`;
 
 export class App extends React.Component {
   constructor(props) {
@@ -104,8 +116,8 @@ export class App extends React.Component {
         )} />
         <Route path="/" render={routeProps => (
           <div className="container">
-            <h1 onClick={this.onClickMainHeading}>Today</h1>
-            <h2>Hello world</h2>
+            <MainHeading onClick={this.onClickMainHeading}>Today</MainHeading>
+            <Subheading>Hello world</Subheading>
             <div className="new-todo-ui">
               <input value={this.props.newTodoName} className="new-todo-input" type="text" onChange={this.onChangeNewTodoInput} onKeyUp={this.onKeyUpNewTodoInput} />
               <button className="btn" onClick={this.onClickNewTodoBtn}>Add</button>
