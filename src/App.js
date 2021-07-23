@@ -19,7 +19,7 @@ import styled from 'styled-components';
 const MainHeading = styled.h1`
   margin-bottom: 1rem;
 `;
-const Subheading = styled.h1`
+const Subheading = styled(h2)`
   text-transform: uppercase;
     letter-spacing: 0.2rem;
     font-size: 1.6rem;

@@ -56,25 +56,6 @@ video {
   height: 100%;
   padding: 1rem 4rem 1rem;
 }
-.dialog {
-  position: fixed;
-  top: 0;
-  background-color: rgba(220,220,220,0.5);
-  z-index: 2;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.dialog-box {
-  padding: 4rem;
-  border-radius: 1rem;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  border: 1px solid #bbb;
-  background-color: white;
-}
 .new-todo-input {
   border: 1px solid #ccc;
   border-radius: 0.3rem;
