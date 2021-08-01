@@ -5,8 +5,13 @@ const actions = {};
 actions.fetchTodos = (payload) => {
   return async (dispatch, getState) => {
     const setTodos = (...options) => { dispatch(actions.setTodos(...options)) };
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-    const todos = await response.json();
+    let todos = [];
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+      todos = await response.json();
+    } catch (e) {
+      
+    }
     setTodos({ todos: test(todos.slice(0,30)) });
   }
 }

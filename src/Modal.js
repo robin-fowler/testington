@@ -18,7 +18,7 @@ const Dialog = styled.div`
     left: 0;
     position: fixed;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     display: flex;
     justify-content: center;
 `;
@@ -27,7 +27,20 @@ const DialogBox = styled.div`
     background-color: white;
     border: 1px solid #bbb;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    padding: 4rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    line-height: 1.2;
+`;
+const DialogTitle = styled.div`
+  font-weight: 600;
+    margin-bottom: 0.6rem;
+`;
+const DialogButtons = styled.div`
+  &:not(:empty) {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 
 export default class Modal extends React.Component {
@@ -35,6 +48,7 @@ export default class Modal extends React.Component {
     super(props);
     
     this.onClickDialog = this.onClickDialog.bind(this);
+    this.onClickDialogButton = this.onClickDialogButton.bind(this);
   }
 
   
@@ -44,12 +58,59 @@ export default class Modal extends React.Component {
    */
   onClickDialog(event) {
     const { onClick } = this.props;
-    onClick();
+    if (typeof onClick === 'function') {
+      onClick();
+    }
+  }
+  /**
+   * Handles the onClick event for the DialogButton element.
+   * @param {Object} event - event object passed from browser
+   */
+  onClickDialogButton({ dialogButton }, event) {
+    const {  } = this.props;
+    if (typeof dialogButton === 'object' && typeof dialogButton.onClick === 'function') {
+      dialogButton.onClick(event);
+    }
   }
 
+  getDialogstyle() {
+    const { overlayColor } = this.props;
+    const style = {};
+  if (overlayColor) {
+    style.backgroundColor = overlayColor;
+  }
+  return style;
+  }
   getDialogVisibility() {
     const { active } = this.props;
     return active;
+  }
+  getDialogBoxstyle() {
+    const { width } = this.props;
+    const style = {};
+  if (width) {
+    style.width = width;
+  }
+  return style;
+  }
+  getDialogTitleTextContent() {
+    const { title } = this.props;
+    return title;
+  }
+  getDialogMessageTextContent() {
+    const { message } = this.props;
+    return message;
+  }
+  getDialogButtonTextContent({ dialogButton }) {
+    if (typeof dialogButton == 'object' && dialogButton.text) {
+    return dialogButton.text;
+  }
+  }
+  getDialogButtonLoop() {
+    const { buttons } = this.props;
+    if (buttons && Array.isArray(buttons)) {
+    return buttons;
+  }
   }
 
   render() {
@@ -57,8 +118,18 @@ export default class Modal extends React.Component {
     return ReactDOM.createPortal((
       <React.Fragment>
         {this.getDialogVisibility() && (
-          <Dialog onClick={this.onClickDialog} className="dialog">
-          <DialogBox className="dialog-box">Hello world</DialogBox>
+          <Dialog onClick={this.onClickDialog} style={this.getDialogstyle()}>
+          <DialogBox style={this.getDialogBoxstyle()}>
+            <DialogTitle style={this.props.titleStyles}>{this.getDialogTitleTextContent()}</DialogTitle>
+            <div style={this.props.messageStyles}>{this.getDialogMessageTextContent()}</div>
+            <DialogButtons>
+              <React.Fragment>
+                {this.getDialogButtonLoop().map((dialogButton, index) => (
+                  <button key={index} onClick={this.onClickDialogButton.bind(this, {dialogButton})}>{this.getDialogButtonTextContent({ dialogButton })}</button>
+                ))}
+              </React.Fragment>
+            </DialogButtons>
+          </DialogBox>
         </Dialog>
         )}
       </React.Fragment>

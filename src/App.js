@@ -19,7 +19,7 @@ import styled from 'styled-components';
 const MainHeading = styled.h1`
   margin-bottom: 1rem;
 `;
-const Subheading = styled(h2)`
+const Subheading = styled.h2`
   text-transform: uppercase;
     letter-spacing: 0.2rem;
     font-size: 1.6rem;
@@ -98,37 +98,49 @@ export class App extends React.Component {
     const { todos } = this.props;
     return todos;
   }
+  getModalbuttons() {
+    const { toggleDialog } = this.props;
+    return [
+    {
+      text: 'Cancel', 
+      onClick: () => {toggleDialog()}
+    }
+  ];
+  }
   getModalonClick() {
     const { toggleDialog } = this.props;
-    toggleDialog();
+    //toggleDialog();
+  console.log('hello')
   }
 
   render() {
     
     return (
-      <Switch>
-        <Route path="/todos/:id" render={routeProps => (
-          <React.Fragment>
-            {this.getTodoViewVisibility() && (
-              <TodoView id={this.getTodoViewid({ routeProps })} />
-            )}
-          </React.Fragment>
-        )} />
-        <Route path="/" render={routeProps => (
-          <div className="container">
-            <MainHeading onClick={this.onClickMainHeading}>Today</MainHeading>
-            <Subheading>Hello world</Subheading>
-            <div className="new-todo-ui">
-              <input value={this.props.newTodoName} className="new-todo-input" type="text" onChange={this.onChangeNewTodoInput} onKeyUp={this.onKeyUpNewTodoInput} />
-              <button className="btn" onClick={this.onClickNewTodoBtn}>Add</button>
+      <React.Fragment>
+        <Switch>
+          <Route path="/todos/:id" render={routeProps => (
+            <React.Fragment>
+              {this.getTodoViewVisibility() && (
+                <TodoView id={this.getTodoViewid({ routeProps })} />
+              )}
+            </React.Fragment>
+          )} />
+          <Route path="/" render={routeProps => (
+            <div className="container">
+              <MainHeading onClick={this.onClickMainHeading}>Today</MainHeading>
+              <Subheading>Hello world</Subheading>
+              <div className="new-todo-ui">
+                <input value={this.props.newTodoName} className="new-todo-input" type="text" onChange={this.onChangeNewTodoInput} onKeyUp={this.onKeyUpNewTodoInput} />
+                <button className="btn" onClick={this.onClickNewTodoBtn}>Add</button>
+              </div>
+              {this.getTodoItemLoop().map((todoItem, index) => (
+                <TodoItem key={index} id={this.getTodoItemid({ todoItem })} />
+              ))}
+              <Modal overlayColor="rgba(0,0,0,0.1)" active={this.props.showDialog} message="This is a Dialog. It displays a title and a message." title="Hello world" width="30rem" buttons={this.getModalbuttons()} onClick={this.getModalonClick.bind(this)} />
             </div>
-            {this.getTodoItemLoop().map((todoItem, index) => (
-              <TodoItem key={index} id={this.getTodoItemid({ todoItem })} />
-            ))}
-            <Modal active={this.props.showDialog} onClick={this.getModalonClick.bind(this)} />
-          </div>
-        )} />
-      </Switch>
+          )} />
+        </Switch>
+      </React.Fragment>
     )
   }
 }
