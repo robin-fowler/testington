@@ -44,7 +44,7 @@ export class App extends React.Component {
    */
   async componentDidMount(event) {
     const { fetchTodos } = this.props;
-    fetchTodos();
+    fetchTodos(); 
   }
   /**
    * Handles the onClick event for the MainHeading element.
