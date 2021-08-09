@@ -93,9 +93,7 @@ export class App extends React.Component {
   }
   getModalonClick() {
     const { toggleDialog } = this.props;
-    // () => {
-  //   toggleDialog();
-  // }
+    toggleDialog();
   }
   getTodoItemid({ todoItem }) {
     return todoItem.id;

@@ -11,11 +11,11 @@ import hero_2 from './assets/hero_2.df8d6580.png';
 import styled, { keyframes } from 'styled-components';
 
 const test = keyframes`
-  0% {
-    transform:scale(0.8);
-  }
   100% {
     transform:scale(1);
+  }
+  0% {
+    transform:scale(0.8);
   }
 `;
 const fadeIn = keyframes`
@@ -51,17 +51,17 @@ const DialogBox = styled.div`
 `;
 const DialogTitle = styled.div`
   &:not(:empty) {
-  margin-bottom: 0.6rem;
-}
-
+    margin-bottom: 0.6rem;
+  }
+  
   font-weight: 600;
 `;
 const DialogButtons = styled.div`
   &:not(:empty) {
-  margin-top: 0.8rem;
-  display: flex;
-  justify-content: flex-end;
-}
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 
 export default class Modal extends React.Component {
@@ -97,10 +97,10 @@ export default class Modal extends React.Component {
   getDialogstyle() {
     const { overlayColor } = this.props;
     const style = {};
-  if (overlayColor) {
-    style.backgroundColor = overlayColor;
-  }
-  return style;
+    if (overlayColor) {
+      style.backgroundColor = overlayColor;
+    }
+    return style;
   }
   getDialogVisibility() {
     const { active } = this.props;
@@ -109,10 +109,10 @@ export default class Modal extends React.Component {
   getDialogBoxstyle() {
     const { width } = this.props;
     const style = {};
-  if (width) {
-    style.width = width;
-  }
-  return style;
+    if (width) {
+      style.width = width;
+    }
+    return style;
   }
   getDialogTitleTextContent() {
     const { title } = this.props;
@@ -124,16 +124,16 @@ export default class Modal extends React.Component {
   }
   getDialogButtonTextContent({ dialogButton }) {
     if (typeof dialogButton == 'object' && dialogButton.text) {
-    return dialogButton.text;
-  }
+      return dialogButton.text;
+    }
   }
   getDialogButtonLoop() {
     const { buttons } = this.props;
     if (Array.isArray(buttons)) {
-    return buttons;
-  } else {
-    return [];
-  }
+      return buttons;
+    } else {
+      return [];
+    }
   }
 
   render() {
