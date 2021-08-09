@@ -8,39 +8,60 @@ import hero_2 from './assets/hero_2.df8d6580.png';
 
 // components
 
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+const test = keyframes`
+  0% {
+    transform:scale(0.8);
+  }
+  100% {
+    transform:scale(1);
+  }
+`;
+const fadeIn = keyframes`
+  100% {
+    opacity:1;
+  }
+  0% {
+    opacity:0;
+  }
+`;
 const Dialog = styled.div`
   align-items: center;
-    background-color: rgba(220,220,220,0.5);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
+  background-color: rgba(220,220,220,0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  animation: ${fadeIn} 0.5s ease;
 `;
 const DialogBox = styled.div`
   border-radius: 1rem;
-    background-color: white;
-    border: 1px solid #bbb;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    padding: 2rem;
-    box-sizing: border-box;
-    line-height: 1.2;
+  background-color: white;
+  border: 1px solid #bbb;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  padding: 2rem;
+  box-sizing: border-box;
+  line-height: 1.2;
+  animation: ${test} 0.5s ease;
 `;
 const DialogTitle = styled.div`
+  &:not(:empty) {
+  margin-bottom: 0.6rem;
+}
+
   font-weight: 600;
-    margin-bottom: 0.6rem;
 `;
 const DialogButtons = styled.div`
   &:not(:empty) {
-    margin-top: 0.8rem;
-    display: flex;
-    justify-content: flex-end;
-  }
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+}
 `;
 
 export default class Modal extends React.Component {
@@ -108,8 +129,10 @@ export default class Modal extends React.Component {
   }
   getDialogButtonLoop() {
     const { buttons } = this.props;
-    if (buttons && Array.isArray(buttons)) {
+    if (Array.isArray(buttons)) {
     return buttons;
+  } else {
+    return [];
   }
   }
 
