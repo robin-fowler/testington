@@ -80,7 +80,7 @@ export class TodoItem extends React.Component {
         <Link to={this.getTodoLinkto()} className="btn" onClick={this.onClickTodoLink}>→</Link>
         <button className="btn" onClick={this.onClickTodoDeleteBtn}>X</button>
       </div>
-    )
+    );
   }
 }
 

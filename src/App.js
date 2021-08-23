@@ -133,7 +133,7 @@ export class App extends React.Component {
           )} />
         </Switch>
       </React.Fragment>
-    )
+    );
   }
 }
 

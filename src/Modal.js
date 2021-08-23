@@ -11,19 +11,19 @@ import hero_2 from './assets/hero_2.df8d6580.png';
 import styled, { keyframes } from 'styled-components';
 
 const test = keyframes`
-  100% {
-    transform:scale(1);
-  }
   0% {
     transform:scale(0.8);
   }
+  100% {
+    transform:scale(1);
+  }
 `;
 const fadeIn = keyframes`
-  100% {
-    opacity:1;
-  }
   0% {
     opacity:0;
+  }
+  100% {
+    opacity:1;
   }
 `;
 const Dialog = styled.div`
@@ -156,7 +156,7 @@ export default class Modal extends React.Component {
         </Dialog>
         )}
       </React.Fragment>
-    ), document.getElementById('_portal'))
+    ), document.getElementById('_portal'));
   }
 }
 

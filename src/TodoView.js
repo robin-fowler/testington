@@ -33,7 +33,7 @@ export class TodoView extends React.Component {
         <h2>{this.getTimeTextContent()}</h2>
         <img src={hero_2} />
       </div>
-    )
+    );
   }
 }
 
