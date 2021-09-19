@@ -58,15 +58,15 @@ export class TodoItem extends React.Component {
     removeTodo({ id });
   }
 
-  getTodoCheckboxchecked() {
+  getTodoCheckboxChecked() {
     const { todo } = this.props;
     return todo.checked;
   }
-  getTodoTextvalue() {
+  getTodoTextValue() {
     const { todo } = this.props;
     return todo.text;
   }
-  getTodoLinkto() {
+  getTodoLinkTo() {
     const { id } = this.props;
     return `/todos/${id}`;
   }
@@ -75,9 +75,9 @@ export class TodoItem extends React.Component {
     
     return (
       <div className="todo-item">
-        <input checked={this.getTodoCheckboxchecked()} type="checkbox" onChange={this.onChangeTodoCheckbox} />
-        <input value={this.getTodoTextvalue()} className="todo-input" type="text" onChange={this.onChangeTodoText} />
-        <Link to={this.getTodoLinkto()} className="btn" onClick={this.onClickTodoLink}>→</Link>
+        <input checked={this.getTodoCheckboxChecked()} type="checkbox" onChange={this.onChangeTodoCheckbox} />
+        <input value={this.getTodoTextValue()} className="todo-input" type="text" onChange={this.onChangeTodoText} />
+        <Link to={this.getTodoLinkTo()} className="btn" onClick={this.onClickTodoLink}>→</Link>
         <button className="btn" onClick={this.onClickTodoDeleteBtn}>X</button>
       </div>
     );

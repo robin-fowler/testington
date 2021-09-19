@@ -9,6 +9,7 @@ export const updateTime = createAction('updateTime', (payload) => {
     return test({ time: moment().format('MMMM Do YYYY, h:mm:ss a') });
   })() }
 });
+export const updateAuthState = createAction('updateAuthState');
 export const setNewTodoName = createAction('setNewTodoName');
 export const toggleDialog = createAction('toggleDialog');
 
@@ -29,6 +30,10 @@ const slice = createSlice({
     [setTodos]: (state, action) => {
       state.todosState = 'ready';
     },
+    [updateAuthState]: (state, action) => {
+      const { payload } = action;
+      state.authState = !!payload.user;
+    },
     [setNewTodoName]: (state, action) => {
       const { payload } = action;
       const { name } = payload;
@@ -48,6 +53,9 @@ export default slice.reducer;
 // selectors
 export const getTime = (state, props) => {
   return state.uiState.time;
+};
+export const getAuthState = (state, props) => {
+  return state.uiState.authState;
 };
 export const getTodosState = (state, props) => {
   return state.uiState.todosState;

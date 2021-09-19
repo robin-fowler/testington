@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import hero_2 from './assets/hero_2.df8d6580.png';
 
 // components
+import { Button, Card } from '@material-ui/core';
 
 import styled, { keyframes } from 'styled-components';
 
@@ -50,11 +51,11 @@ const DialogBox = styled.div`
   animation: ${test} 0.5s ease;
 `;
 const DialogTitle = styled.div`
+  font-weight: 600;
+
   &:not(:empty) {
     margin-bottom: 0.6rem;
   }
-  
-  font-weight: 600;
 `;
 const DialogButtons = styled.div`
   &:not(:empty) {
@@ -94,7 +95,7 @@ export default class Modal extends React.Component {
     }
   }
 
-  getDialogstyle() {
+  getDialogStyle() {
     const { overlayColor } = this.props;
     const style = {};
     if (overlayColor) {
@@ -102,11 +103,11 @@ export default class Modal extends React.Component {
     }
     return style;
   }
-  getDialogVisibility() {
+  doRenderDialog() {
     const { active } = this.props;
     return active;
   }
-  getDialogBoxstyle() {
+  getDialogBoxStyle() {
     const { width } = this.props;
     const style = {};
     if (width) {
@@ -121,6 +122,9 @@ export default class Modal extends React.Component {
   getDialogMessageTextContent() {
     const { message } = this.props;
     return message;
+  }
+  getButtonOnClick() {
+    return () => alert('hello')
   }
   getDialogButtonTextContent({ dialogButton }) {
     if (typeof dialogButton == 'object' && dialogButton.text) {
@@ -140,11 +144,18 @@ export default class Modal extends React.Component {
     
     return ReactDOM.createPortal((
       <React.Fragment>
-        {this.getDialogVisibility() && (
-          <Dialog onClick={this.onClickDialog} style={this.getDialogstyle()}>
-          <DialogBox style={this.getDialogBoxstyle()}>
+        {this.doRenderDialog() && (
+          <Dialog onClick={this.onClickDialog} style={this.getDialogStyle()}>
+          <DialogBox style={this.getDialogBoxStyle()}>
             <DialogTitle style={this.props.titleStyles}>{this.getDialogTitleTextContent()}</DialogTitle>
-            <div style={this.props.messageStyles}>{this.getDialogMessageTextContent()}</div>
+            <div style={this.props.messageStyles}>
+              {this.getDialogMessageTextContent()}
+              {this.props.children}
+            </div>
+            <Button onClick={this.getButtonOnClick()}>
+              Hello world
+              <h1 />
+            </Button>
             <DialogButtons>
               <React.Fragment>
                 {this.getDialogButtonLoop().map((dialogButton, index) => (
