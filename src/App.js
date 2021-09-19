@@ -53,7 +53,6 @@ this.photo = React.createRef();
     const mainHeading = this.mainHeading.current;
     fetchTodos();
     authStateChanged();
-    
     mainHeading.style.backgroundColor = 'lavender';
   }
   /**
