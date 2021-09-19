@@ -66,7 +66,7 @@ this.photo = React.createRef();
       quality: 90,
       allowEditing: true,
       resultType: CameraResultType.Uri
-    });
+    }); 
     
     // image.webPath will contain a path that can be set as an image src.
     // You can access the original file using image.path, which can be
